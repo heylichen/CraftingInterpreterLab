@@ -1,4 +1,4 @@
-package crafting.interpreter.lox.ch4_scan;
+package crafting.interpreter.lox.ch4scan;
 
 import org.junit.Assert;
 import org.junit.Test;

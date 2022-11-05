@@ -1,4 +1,7 @@
-package crafting.interpreter.lox.ch4_scan;
+package crafting.interpreter.lox.ch6parse;
+
+import crafting.interpreter.lox.common.Token;
+import crafting.interpreter.lox.common.TokenType;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -14,7 +17,7 @@ public class Lox {
   public static void main(String[] args) throws IOException {
     if (args.length > 1) {
       System.out.println("Usage: jlox [script]");
-      System.exit(64); 
+      System.exit(64);
     } else if (args.length == 1) {
       runFile(args[0]);
     } else {
@@ -25,6 +28,13 @@ public class Lox {
   public static boolean runString(String program) {
     run(program);
     return hadError;
+  }
+
+  public static Expr parse(String program) {
+    Scanner scanner = new Scanner(program);
+    List<Token> tokens = scanner.scanTokens();
+    Parser parser = new Parser(tokens);
+    return parser.parse();
   }
 
   private static void runFile(String path) throws IOException {
@@ -39,7 +49,7 @@ public class Lox {
     InputStreamReader input = new InputStreamReader(System.in);
     BufferedReader reader = new BufferedReader(input);
 
-    for (;;) {
+    for (; ; ) {
       System.out.print("> ");
       String line = reader.readLine();
       if (line == null) break;
@@ -60,6 +70,14 @@ public class Lox {
 
   static void error(int line, String message) {
     report(line, "", message);
+  }
+
+  static void error(Token token, String message) {
+    if (token.getType() == TokenType.EOF) {
+      report(token.getLine(), " at end", message);
+    } else {
+      report(token.getLine(), " at '" + token.getLexeme() + "'", message);
+    }
   }
 
   private static void report(int line, String where,

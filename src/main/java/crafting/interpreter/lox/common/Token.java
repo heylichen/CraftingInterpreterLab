@@ -1,13 +1,19 @@
-package crafting.interpreter.lox.ch4_scan;
+package crafting.interpreter.lox.common;
 
-class Token {
+
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
+public class Token {
   final TokenType type;
   //original lexeme text
   final String lexeme;
   final Object literal;
   final int line;
 
-  Token(TokenType type, String lexeme, Object literal, int line) {
+  public Token(TokenType type, String lexeme, Object literal, int line) {
     this.type = type;
     this.lexeme = lexeme;
     this.literal = literal;

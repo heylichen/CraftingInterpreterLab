@@ -1,11 +1,14 @@
-package crafting.interpreter.lox.ch4_scan;
+package crafting.interpreter.lox.ch6parse;
+
+import crafting.interpreter.lox.common.Token;
+import crafting.interpreter.lox.common.TokenType;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static crafting.interpreter.lox.ch4_scan.TokenType.*;
+import static crafting.interpreter.lox.common.TokenType.*;
 
 class Scanner {
   private final String source;
