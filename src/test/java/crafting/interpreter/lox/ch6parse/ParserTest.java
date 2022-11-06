@@ -9,6 +9,7 @@ public class ParserTest {
   public void testParse1() {
     printAst("6/3-1");
     printAst("(6/3-1 + 2)");
+    printAst("(-1 * 2 +3 >= !1  ==1)");
   }
 
   private void printAst(String program) {

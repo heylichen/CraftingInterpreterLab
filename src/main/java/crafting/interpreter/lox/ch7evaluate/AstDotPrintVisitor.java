@@ -1,4 +1,4 @@
-package crafting.interpreter.lox.ch6parse;
+package crafting.interpreter.lox.ch7evaluate;
 
 public class AstDotPrintVisitor implements Expr.Visitor<String> {
   private DotCache dotCache;
