@@ -27,4 +27,22 @@ public class LoxTest {
         "}";
     Lox.run(prog);
   }
+
+  @Test
+  public void testClosure() {
+    String prog = "fun makeCounter() {\n" +
+        "  var i = 0;\n" +
+        "  fun count() {\n" +
+        "    i = i + 1;\n" +
+        "    print i;\n" +
+        "  }\n" +
+        "\n" +
+        "  return count;\n" +
+        "}\n" +
+        "\n" +
+        "var counter = makeCounter();\n" +
+        "counter(); // \"1\".\n" +
+        "counter(); // \"2\".";
+    Lox.run(prog);
+  }
 }
