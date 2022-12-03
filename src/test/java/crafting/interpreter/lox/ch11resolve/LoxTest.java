@@ -52,4 +52,11 @@ public class LoxTest {
     }
     f();
   }
+
+  @Test
+  public void testResolver1() {
+    String prog = "var a = 1;\n" +
+        "print a + 1;";
+    Lox.run(prog);
+  }
 }

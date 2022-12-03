@@ -8,8 +8,9 @@ import lombok.Setter;
 @Setter
 public class Token {
   final TokenType type;
-  //original lexeme text
+  //original lexeme text. eg, a string "Hello"
   final String lexeme;
+  //parsed value. eg, Hello
   final Object literal;
   final int line;
 
